@@ -1,0 +1,63 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<div class="container">
+        <div class="jumbotron">
+            <h1 class="display-3">Welcome to Cryto News!</h1>
+            <p class="lead">Get your latest update related to news and stuff here</p>
+            
+        </div>
+        </div>
+<div class="container">
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>24h HIGH</th>
+            <th>24h LOW</th>
+            <th>Market Cap</th>
+</tr>
+        </thead>
+        <tbody>
+{% for key,value in price.DISPLAY.items %}
+
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value.USD.PRICE }}</td>
+                <td>{{ value.USD.HIGHDAY }}</td>
+                <td>{{ value.USD.LOWDAY }}</td>
+                <td>{{ value.USD.MKTCAP }}</td>
+            </tr>
+{% endfor %}
+            
+        </tbody>
+</table>
+</div>
+
+
+
+
+
+<div class="container">
+    <div class="row">
+
+        {% for x in api.Data %}
+        <div class="col-lg-4">
+        
+<div class="card text-left">
+  <img class="card-img-top" src="{{ x.imageurl }}" alt=" {{ x.source }}">
+  <div class="card-body">
+    <h4 class="card-title">{{ x.title }}</h4>
+    <p class="card-text"> {{ x.body }}</p>
+    <a href="{{ x.url }}" class="btn btn-primary">Read More</a>
+  </div>
+</div><br>
+        </div>
+{% endfor %}
+
+</div>
+</div>
+
+{{ api.Data }}
+{% endblock %}
