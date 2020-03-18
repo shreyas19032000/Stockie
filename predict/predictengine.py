@@ -4,10 +4,10 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-from keras.models import Sequential
-from keras.layers import Dense,LSTM
-from keras.models import Sequential
-from keras.layers import Dense, LSTM
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense,LSTM
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, LSTM
 import matplotlib.pyplot as plt
 import io
 import urllib,base64
@@ -17,6 +17,7 @@ plt.style.use('fivethirtyeight')
 import pandas_datareader as web
 def algo(nasdaq,sdate,edate):
     df = web.DataReader(nasdaq, data_source = 'yahoo', start = sdate, end = edate)
+    print(df)
 
 
 ## Get number of rows and columns
@@ -79,7 +80,7 @@ def algo(nasdaq,sdate,edate):
     model.compile(optimizer = 'adam', loss = 'mean_squared_error')
 
 ## Train the model
-    model.fit(x_train, y_train, batch_size = 1, epochs = 2)
+    model.fit(x_train, y_train, batch_size = 1, epochs = 1)
 
 ## Create a test set
     test_data = scaled_data[training_data_len - 60:, :]
@@ -124,3 +125,4 @@ def algo(nasdaq,sdate,edate):
 
 
     #plt.show()
+
