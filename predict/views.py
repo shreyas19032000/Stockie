@@ -11,8 +11,12 @@ def form(request):
     if request.method == 'POST':
         nasdaq = request.POST.get('nasdaq')
         date = request.POST.get('date')
+        
         daten = datetime.strptime(date,'%Y-%m-%d') - relativedelta(years=10)
+        daten = daten.strftime('%Y-%m-%d')
+    
         print(nasdaq)
+        print(date)
         print(daten)
         graph = algo(nasdaq,daten,date)
         return render(request,'predict.html',{'data':graph})
