@@ -14,7 +14,7 @@ def form(request):
         daten = datetime.strptime(date,'%Y-%m-%d') - relativedelta(years=10)
         print(nasdaq)
         print(daten)
-        graph = algo(nasdaq,date,daten)
+        graph = algo(nasdaq,daten,date)
         return render(request,'predict.html',{'data':graph})
     return render(request,'predict.html',{})        
     
