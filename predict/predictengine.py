@@ -17,7 +17,7 @@ plt.style.use('fivethirtyeight')
 import pandas_datareader as web
 def algo(nasdaq,sdate,edate):
     df = web.DataReader(nasdaq, data_source = 'yahoo', start = sdate, end = edate)
-    print(df)
+    # print(df)
 
 
 ## Get number of rows and columns
@@ -71,9 +71,9 @@ def algo(nasdaq,sdate,edate):
 ## Build the LSTM model
 
     model = Sequential()
-    model.add(LSTM(50, return_sequences = True, input_shape = (x_train.shape[1], 1)))
-    model.add(LSTM(50, return_sequences = False))
-    model.add(Dense(25))
+    model.add(LSTM(50, input_shape = (x_train.shape[1], 1), activation = 'relu'))
+    # model.add(LSTM(50, return_sequences = False))
+    # model.add(Dense(25))
     model.add(Dense(1))
 
 ## Compile the model
@@ -125,4 +125,7 @@ def algo(nasdaq,sdate,edate):
 
 
     #plt.show()
+
+
+
 
