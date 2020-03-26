@@ -2,6 +2,7 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
+
 <form action="" method="POST">
     {%csrf_token %}
     <div class="form-group" style="text-align: center;">
@@ -19,18 +20,21 @@
     
     
   </form>
+  <br>
   {% if nasdaq %}
   <div>
-    <h1>Company Name  : {{nasdaq}}</h1>
+    <h2>Company Name  : {{nasdaq}}</h2>
   </div>
-  {% endif%}
-  <div style="text-align: center;">
-    <img src="data:image/png;base64,{{data}}" alt="">
-</div>
+  
+<br>
+<img src="data:image/png;base64,{{data}}" id="myImg" alt="" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
 
-<h1>Key Data For Last 2 Days</h01>
-<table class="table">
+<br>
+<h3>Key Data For Last 2 Days</h3>
+<br>
+<table class="table table-bordered">
   <tr>
+    <th>Date</th>
     <th>High</th>
     <th>Low</th>
     <th>Open</th>
@@ -39,6 +43,7 @@
   </tr>
 {% for i, r in oneday.iterrows %}
 <tr>
+    <td>{{  datenow }}</td>
     <td>{{ r.High }}</td>
     <td>{{ r.Low }}</td>
     <td>{{ r.Open }}</td>
@@ -47,6 +52,7 @@
     </tr>
 {% endfor %}
 </table>
+{% endif%}
 
   
 

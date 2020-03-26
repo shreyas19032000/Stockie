@@ -17,7 +17,7 @@ plt.style.use('fivethirtyeight')
 import pandas_datareader as web
 def algo(nasdaq,sdate,edate):
     df = web.DataReader(nasdaq, data_source = 'yahoo', start = sdate, end = edate)
-    # print(df)
+    print(df)
 
 
 ## Get number of rows and columns
