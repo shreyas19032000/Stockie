@@ -22,8 +22,9 @@ def form(request):
         # print(daten)
         graph = algo(nasdaq,daten,date)
         oneday = web.DataReader(nasdaq, data_source = 'yahoo', start = datetime.today().strftime('%Y-%m-%d') , end = datetime.today().strftime('%Y-%m-%d'))
-        oneday = oneday.head(1)
-        return render(request,'predict.html',{'data':graph, 'nasdaq':nasdaq, 'oneday':oneday, 'datenow':datenow})
+        oneday1 = oneday.head(1)
+        print(oneday1)
+        return render(request,'predict.html',{'data':graph, 'nasdaq':nasdaq, 'oneday1':oneday1, 'datenow':datenow})
     return render(request,'predict.html',{})  
 
 
